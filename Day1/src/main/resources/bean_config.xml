@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Bean namespace to configure all bean class -->
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+<!-- This is out metatdata of bean -->
+   <!-- First way of injection value to member of  bean: Value as a TAG -->
+	<bean class="co.app.Student" name="student1">
+		<property name="id"><!-- name should match with member of class -->
+			<value>10001</value>
+		</property>
+		<property name="name">
+			<value>Akshay</value>
+		</property>
+	</bean>
+	<!-- Second way inecting value to member of bean :Value as ATTRIBUTE -->
+	<bean class="co.app.Student" name="student2">
+		<property name="id" value="10002"/><!-- name should match with member of class -->
+		
+		<property name="name" value="Akash"/>
+		
+	</bean>
+	<!-- 3:using P-schema you can inject all proporties of bean for that includ xmlns:p  -->
+	<!-- 
+	
+	<bean class="co.app.Student" name="student2" p:id="10003" p:name="Rahul" />
+	 -->
+</beans>
