@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="phone1" class="com.app.Phone">
+<property name="phonenumbers" value="9527237563"></property>
+
+	</bean>
+	<bean id="phone2" class="com.app.Phone">
+<property name="phonenumbers" value="9527237563"></property>
+
+	</bean>
+	<bean id="phone3" class="com.app.Phone">
+<property name="phonenumbers" value="9527237563"></property>
+
+	</bean>
+	<bean id="phone4" class="com.app.Phone">
+<property name="phonenumbers" value="9527237563"></property>
+
+	</bean>
+
+
+	<bean id="employee1" class="com.app.Employee">
+		<property name="id" value="1"></property>
+		<property name="name" value="Sachin Yadav"></property>
+		<property name="phonenumbers" >
+		<list>
+		<ref bean="phone1"/>
+		<ref bean="phone2"/>
+		<ref bean="phone3"/>
+		<ref bean="phone4"/>
+		</list>
+		</property>
+		<!-- Employee bean depend on Address bean so in address proporty of Employee 
+			reference attribute value is Address class id i.e object -->
+	</bean>
+</beans>

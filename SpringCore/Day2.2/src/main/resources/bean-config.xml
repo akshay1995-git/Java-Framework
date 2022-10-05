@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="a" class="com.Address">
+		<constructor-arg value="ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+<!-- 
+Ambiguity Error :-
+Some cases multiple constructor present with same number of argument but differnt types
+but while configuring bean if you did not mention type of value then bydefault it take string
+to overcome this ambiguity you need to mention  type of argument in constructor
+
+ -->
+
+	<bean id="emp1" class="com.Employee">
+		<constructor-arg value="12" type="int"></constructor-arg>
+		<constructor-arg value="Sonoo"></constructor-arg>
+		<constructor-arg>
+			<ref bean="a" />
+		</constructor-arg>
+	</bean>
+
+	<bean id="a1" class="com.Address">
+		<constructor-arg value="ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	<bean id="a2" class="com.Address">
+		<constructor-arg value="Delhi"></constructor-arg>
+		<constructor-arg value="Delhi"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+	<bean id="a3" class="com.Address">
+		<constructor-arg value="Mumbai"></constructor-arg>
+		<constructor-arg value="Maharaashtra"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+
+	<bean id="emp2" class="com.Employee">
+		<constructor-arg value="12" type="int"></constructor-arg>
+		<constructor-arg value="Sonoo"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="a1" />
+				<ref bean="a2" />
+				<ref bean="a3" />
+			</list>
+		</constructor-arg>
+	</bean>
+
+</beans>

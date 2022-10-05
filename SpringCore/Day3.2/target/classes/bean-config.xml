@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<bean id="a" class="com.Address">
+		<constructor-arg value="ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="India"></constructor-arg>
+	</bean>
+
+
+	<bean id="emp1" class="com.Employee" autowire="constructor">
+	<!-- 
+	Autowire by constructor dont need to pass extra constructor-arg to dependent bean
+	dependent bean autowire required ref of constructor 
+	 -->
+		<constructor-arg value="12" type="int"></constructor-arg>
+		<constructor-arg value="Sonoo"></constructor-arg>
+         <!-- here bean address autowire automatically no need to pass third argument  it autowire-->
+         
+	</bean>
+
+
+	
+
+</beans>
