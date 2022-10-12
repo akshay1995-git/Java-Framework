@@ -1,0 +1,54 @@
+3. Complete CRUD work for Vendor
+3.1 Register New Vendor
+I/P : all vendor details excluding vendor id
+O/P a message indicating success or failure
+eg : String registerVendor(Vendor vendor);
+session.save
+
+3.2 Vendor Login 
+I/P email , password
+O/P : Login successful with vendor details or invalid login message.
+eg : String authenticateVendor(String email,String pwd);
+jpql="select v from Vendor v where v.email=:em and v.password=:pass";
+Vendor v=session -- createQuery(jpql,Vendor.class).setParameter(....).setParameter(....).getSingleResult(); --- throws NoResultException ---invalid login
+
+
+3.3 Update vendor's reg amount
+I/P : email , reg amount offset
+O/P a message indicating success or failure
+eg : String updateRegAmount(email,offset)
+jpql="select v from Vendor v where v.email=:em"
+Vendor v=session -- createQuery(jpql,Vendor.class).setParameter(....).getSingleResult();
+v : persistent
+setter....
+commit
+
+3.4 Delete all vendor details whose reg amount < specified amount & registered after specific date.
+I/P : reg amount n reg date
+O/P a message indicating success or failure
+eg : Bulk deletion
+jpql ="delete from Vendor v where ....."
+int count=session. createQuery(jpql).setParameter(....).setParameter(....).executeUpdate();
+
+
+OR
+Complete DAO / POJOs for the voting assignemnt with "admin" role or "voter" role
+
+
+
+Day 11
+In combined lab : 
+1. Identify n Solve lazy init issues .
+2. Create one to one bi directional association , with shared primary key , between Student & Address.
+3. Replace it by uni dir , for reducing no of queries.
+
+
+3. Revise class work
+1.1 import day11.1 , to revise Blob handling
+1.2 import day11.2 , to revise one to many & one to one bi directional association between entities.
+
+4.Hands on (Mandatory)
+4.1 Create Vendor 1<---->* BankAccount , bi directional one to many association
+4.2 Create Vendor 1<----Location , uni dir one to one association.
+Optional
+4.3 Create Topic 1 <-----* Tutorial , uni directional  many to one association
